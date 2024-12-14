@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { register } from '../../store/actions';
+import { selectIsSubmitting } from '../../store/reducers';
+import { AuthStateInterface } from '../../types/authState.interface';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +16,14 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   form?: FormGroup
-    
+
+
   constructor(
-      private fb: FormBuilder
+      private fb: FormBuilder,
+      private store: Store<{auth: AuthStateInterface}>
     ){}
+
+  isSubmitting$?: any
 
   ngOnInit(): void {
     this.form = this.fb.nonNullable.group({
@@ -23,9 +31,16 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', Validators.required]
     })
+    this.isSubmitting$ = this.store.select(selectIsSubmitting)
   }
   onSubmit() {
+    const request = {
+      user: this.form?.getRawValue()
+    }
     console.log(this.form?.getRawValue())
+    this.store.dispatch(
+      register({request})
+      )
     }
     
 

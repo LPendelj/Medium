@@ -1,3 +1,5 @@
+
+{{isSubmitting$ | async}}
 <div class="auth-page" *ngIf="form">
     <div class="container page">
         <div class="row">
@@ -17,7 +19,7 @@
                     <fieldset class="form-group">
                         <input formControlName="password" type="password" class="form-control form-control-lg" placeholder="Password">
                     </fieldset>
-                    <button class="btn btn-lg btn-primary pull-xs-right">Sign up!</button>
+                    <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="isSubmitting$ | async">Sign up!</button>
                 </form>
             </div>
         </div>
