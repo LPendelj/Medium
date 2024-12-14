@@ -4,6 +4,7 @@ import { RegisterRequestInterface } from '../types/registerRequest.interface';
 import { map, Observable } from 'rxjs';
 import { CurrentUserInterface } from '../../shared/types/currentUser.interface';
 import { AuthResponseInterface } from '../types/authResponse.interface';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class AuthService {
   ) { }
 
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface>{
-    const api = 'http://localhost:3000/api/users'
+    const api = environment.apiUrl + 'api/users'
     return this.http.post<AuthResponseInterface>(api, data).pipe(
       map(response => response.user)
     )

@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { register } from '../../store/actions';
 import { selectIsSubmitting } from '../../store/reducers';
 import { AuthStateInterface } from '../../types/authState.interface';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
       private fb: FormBuilder,
-      private store: Store<{auth: AuthStateInterface}>
+      private store: Store<{auth: AuthStateInterface}>,
+      private authService: AuthService
     ){}
 
   isSubmitting$?: any
@@ -41,7 +43,12 @@ export class RegisterComponent implements OnInit {
     this.store.dispatch(
       register({request})
       )
+    this.authService.register(request)
+      .subscribe(
+        res => console.log(res)
+      )
     }
+    
     
 
  
