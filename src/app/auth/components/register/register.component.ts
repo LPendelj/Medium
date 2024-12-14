@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { register } from '../../store/actions';
 import { selectIsSubmitting } from '../../store/reducers';
 import { AuthStateInterface } from '../../types/authState.interface';
 import { AuthService } from '../../services/auth.service';
+import { authActions } from '../../store/actions';
 
 @Component({
   selector: 'app-register',
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     }
     console.log(this.form?.getRawValue())
     this.store.dispatch(
-      register({request})
+      authActions.register({request})
       )
     this.authService.register(request)
       .subscribe(
