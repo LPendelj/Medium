@@ -1,35 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import {
-  selectIsSubmitting,
-  selectValidationErrors,
-} from '../../store/reducers';
 import { AuthStateInterface } from '../../types/authState.interface';
 import { AuthService } from '../../services/auth.service';
-import { authActions } from '../../store/actions';
 import { combineLatest, Observable } from 'rxjs';
+import { selectIsSubmitting, selectValidationErrors } from '../../store/reducers';
+import { authActions } from '../../store/actions';
+import { CommonModule } from '@angular/common';
 import { BackendErrorMessagesComponent } from '../../../shared/components/backend-error-messages/backend-error-messages.component';
 
 @Component({
-  selector: 'app-register',
-  imports: [
-    RouterLink,
-    CommonModule,
-    ReactiveFormsModule,
-    BackendErrorMessagesComponent,
-  ],
-  templateUrl: './register.component.html',
+  selector: 'app-login',
   standalone: true,
+  imports: [CommonModule, BackendErrorMessagesComponent, ReactiveFormsModule],
+  templateUrl: './login.component.html',
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent {
   form?: FormGroup;
 
   constructor(
@@ -45,7 +31,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.nonNullable.group({
-      username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
     });
@@ -60,8 +45,8 @@ export class RegisterComponent implements OnInit {
     const request = {
       user: this.form?.getRawValue(),
     };
-    this.store.dispatch(authActions.register({ request }));
+    this.store.dispatch(authActions.login({ request }));
 
-    // this.authService.register(request).subscribe((res) => console.log(res));
+    // this.authService.login(request).subscribe((res) => console.log(res));
   }
 }
