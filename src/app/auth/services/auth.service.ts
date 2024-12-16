@@ -7,19 +7,15 @@ import { AuthResponseInterface } from '../types/authResponse.interface';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  constructor(private http: HttpClient) {}
 
-  constructor(
-    private http: HttpClient
-  ) { }
-
-  register(data: RegisterRequestInterface): Observable<CurrentUserInterface>{
-    const api = environment.apiUrl + 'api/users'
-    return this.http.post<AuthResponseInterface>(api, data).pipe(
-      map(response => response.user)
-    )
+  register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
+    const api = environment.apiUrl + 'api/users';
+    return this.http
+      .post<AuthResponseInterface>(api, data)
+      .pipe(map((response) => response.user));
   }
-
 }
