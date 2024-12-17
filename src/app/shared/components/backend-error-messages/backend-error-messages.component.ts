@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-backend-error-messages',
@@ -17,7 +17,7 @@ export class BackendErrorMessagesComponent {
     this.errorMessages = Object.keys(this.backendErrors).map(
       (name: string) => {
         const messages = this.backendErrors[name].join('')
-        return `${messages}`
+        return `${name} ${messages}`
       }
     )
   }
