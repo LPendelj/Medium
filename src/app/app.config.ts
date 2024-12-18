@@ -10,7 +10,10 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideEffects } from '@ngrx/effects';
 
 import * as authEffects from './auth/store/effects'
+import * as feedEffects from './shared/components/feed/store/effects'
+
 import { authInterceptor } from './shared/services/authInterceptor';
+import { feedFeatureKey, feedReducer } from './shared/components/feed/store/reducers';
 
 
 export const appConfig: ApplicationConfig = {
@@ -22,7 +25,8 @@ export const appConfig: ApplicationConfig = {
       router: routerReducer
     }),
     provideState(authFeatureKey, authReducer),
-    provideEffects(authEffects),
+    provideState(feedFeatureKey, feedReducer),
+    provideEffects(authEffects, feedEffects),
     provideRouterStore(),
     provideStoreDevtools({
       maxAge: 25,
