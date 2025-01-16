@@ -16,5 +16,9 @@ export const routes: Routes = [
     {
         path: 'feed',
         loadChildren: () => import('./yourFeed/yourFeed.routes').then(m => m.feedRoutes)
+    },
+    {
+        path: 'articles/:slug',
+        loadChildren: () => import('./article/article.routes').then(m => m.articleRoutes)
     }
 ];
