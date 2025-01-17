@@ -17,7 +17,7 @@ export const articleFeature = createFeature({
         on(articleActions.getArticleSuccess, (state, action) => ({
             ...state,
             isLoading: false,
-            article: action.article
+            data: action.article
         })),
         on(articleActions.getArticleFailure, (state, action) => ({...state, isLoading: false})),
         on(routerNavigationAction, ()=> initialState)

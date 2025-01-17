@@ -35,12 +35,6 @@ export class ArticleComponent implements OnInit {
   constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.data$ = combineLatest({
-      isLoading: this.store.select(selectIsLoading),
-      error: this.store.select(selectError),
-      article: this.store.select(selectArticleData),
-      isAuthor: this.isAuthor$,
-    });
     this.slug = this.route.snapshot.paramMap.get('slug') ?? '';
     this.store.dispatch(articleActions.getArticle({ slug: this.slug }));
     this.isAuthor$ = combineLatest({
@@ -61,5 +55,11 @@ export class ArticleComponent implements OnInit {
         return article.author.username === currentUser.username;
       })
     );
+    this.data$ = combineLatest({
+      isLoading: this.store.select(selectIsLoading),
+      error: this.store.select(selectError),
+      article: this.store.select(selectArticleData),
+      isAuthor: this.isAuthor$,
+    });
   }
 }

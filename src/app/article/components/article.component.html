@@ -26,12 +26,12 @@
         </div>
         <div class="container page">
             <!-- {{}} -->
-            <app-loading></app-loading>
-            <app-error-message></app-error-message>
+            <app-loading *ngIf="data.isLoading"></app-loading>
+            <app-error-message *ngIf="data.error"></app-error-message>
 
             <div class="row article-content">
                 <div class="col-xs-12">
-                    <p>{{data | json}}</p>
+                    <p>{{data.article!.body}}</p>
                     <!-- TAGS -->
                 </div>
             </div>
