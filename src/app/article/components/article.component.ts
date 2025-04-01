@@ -62,4 +62,8 @@ export class ArticleComponent implements OnInit {
       isAuthor: this.isAuthor$,
     });
   }
+
+  deleteArticle(){
+    this.store.dispatch(articleActions.deleteArticle({slug: this.slug || ''}))
+  }
 }

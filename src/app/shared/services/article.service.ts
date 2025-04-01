@@ -8,7 +8,7 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
+export class SharedArticleService {
 
   constructor(
     private http: HttpClient
@@ -19,4 +19,6 @@ export class ArticleService {
     return this.http.get<ArticleResponseInterface>(apiUrl)
       .pipe(map((response)=> response.article))
   }
+
+  
 }

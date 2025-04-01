@@ -4,6 +4,7 @@ import { provideEffects } from "@ngrx/effects";
 import * as articleEffects from "./store/effects"
 import { provideState } from "@ngrx/store";
 import { articleFeatureKey, articleReducer } from "./store/reducers";
+import { ArticleService } from "./services/article.service";
 
 export const articleRoutes: Route[] = [
     {
@@ -11,7 +12,8 @@ export const articleRoutes: Route[] = [
         component: ArticleComponent,
         providers: [
             provideEffects(articleEffects),
-            provideState(articleFeatureKey, articleReducer)
+            provideState(articleFeatureKey, articleReducer),
+            ArticleService
         ]
     },
 ]

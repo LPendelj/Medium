@@ -62,7 +62,6 @@ export class FeedComponent implements OnInit {
       offset,
       ...parsedUrl.query
     })
-    console.log(stringified)
     const apiWithParams = `${parsedUrl.url}?${stringified}`
     this.store.dispatch(feedActions.getFeed({url: apiWithParams}))
   }
