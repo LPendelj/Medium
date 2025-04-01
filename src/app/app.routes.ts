@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadChildren: () => import('./yourFeed/yourFeed.routes').then(m => m.feedRoutes)
     },
     {
+        path: 'articles/new',
+        loadChildren: () => import('./createArticle/create-article.routes').then(m => m.routes)
+    },
+    {
         path: 'articles/:slug',
         loadChildren: () => import('./article/article.routes').then(m => m.articleRoutes)
     }
