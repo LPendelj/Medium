@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './tag-list.component.html',
 })
-export class TagListComponent {
+export class tagListComponent {
 
   @Input() tags: PopularTagType[] = [];
 

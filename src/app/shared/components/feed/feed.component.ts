@@ -10,12 +10,12 @@ import { LoadingComponent } from '../loading/loading.component';
 import { environment } from '../../../../environments/environment';
 import { PaginationComponent } from '../pagination/pagination.component';
 import queryString from 'query-string';
-import { TagListComponent } from '../tag-list/tag-list.component';
+import { tagListComponent } from '../tag-list/tag-list.component';
 
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [CommonModule, RouterLink, ErrorMessageComponent, LoadingComponent, PaginationComponent, TagListComponent],
+  imports: [CommonModule, RouterLink, ErrorMessageComponent, LoadingComponent, PaginationComponent, tagListComponent],
   templateUrl: './feed.component.html'
 })
 export class FeedComponent implements OnInit {

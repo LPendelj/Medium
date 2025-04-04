@@ -15,11 +15,11 @@
                         {{data.article.author.username}}
                     </a>
                     <span class="data">
-                        {{data.article.createdAt}}
+                        {{data.article.createdAt | date}}
                     </span>
                 </div>
                 <span *ngIf="data.isAuthor">
-                    <a [routerLink]="['articles', data.article.slug, 'edit']" class="btn btn-outline-secondary btn-sm">
+                    <a [routerLink]="['edit']" class="btn btn-outline-secondary btn-sm">
                         <i class="ion-edit"></i>
                         Edit Article
                     </a>

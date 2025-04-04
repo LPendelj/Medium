@@ -58,5 +58,5 @@ export const redirectAfterDeleteEffect = createEffect(
         )
     } 
     ,
-    {functional: true}
+    {functional: true, dispatch: false}
 )

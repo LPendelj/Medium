@@ -16,7 +16,7 @@
         <a [routerLink]="['/profiles', article.author.username]">
           {{ article.author.username }}
         </a>
-        <span class="date">{{ article.createdAt }}</span>
+        <span class="date">{{ article.createdAt | date: 'medium' }}</span>
       </div>
       <div class="pull-xs-right">Add TO FAVORITES</div>
       <a [routerLink]="['/articles', article.slug]" class="preview-link">

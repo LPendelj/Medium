@@ -10,5 +10,9 @@ export const createArticleActions = createActionGroup({
         'Create article': props<{request: ArticleRequestInterface}>(),
         'Create article success': props<{article: ArticleInterface}>(),
         'Create article failure': props<{errors: BackendErrorsInterface}>(),
+
+        'Edit article': props<{request: ArticleRequestInterface}>(),
+        'Edit article success': props<{article: ArticleInterface}>(),
+        'Edit article failure': props<{errors: BackendErrorsInterface}>(),
     }
 });

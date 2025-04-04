@@ -8,7 +8,7 @@ export interface ArticleInterface{
     favorited: boolean,
     favoritesCount: number,
     slug: string,
-    taglist: PopularTagType[],
+    tagList: PopularTagType[],
     title: string,
     updatedAt: string,
     author: ProfileInterface
